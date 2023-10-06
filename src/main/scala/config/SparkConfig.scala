@@ -15,12 +15,11 @@ object SparkConfig {
   def config(): SparkConf = {
     new SparkConf()
       .setAppName("data_algorithms")
-      .setMaster("spark://localhost:7077")
+      .setMaster("spark://11.0.0.193:7077")
       .set("spark.executor.memory", "4g")
       .set("spark.executor.cores", "1")
       .set("HADOOP_USER_NAME", "root")
-      .set("spark.driver.host", "localhost")
-//      .set("spark.driver.host", "11.0.0.193")
+      .set("spark.driver.host", "11.0.0.199")
       .set("spark.hadoop.fs.s3a.endpoint", "http://11.0.0.197:9000")
       .set("spark.hadoop.fs.s3a.access.key", "zb38TwMyPsi3aGigkcfT")
       .set("spark.hadoop.fs.s3a.secret.key", "ek7RlhyzafYLkb1YPIEgmfNRxIlF5FqHxVlJ9ZpV")
@@ -32,8 +31,7 @@ object SparkConfig {
 //      .set("HADOOP_HOME", "D:/application/hadoop")
 
       .setJars(Seq(
-        "/Users/adan/code/egg/data_algorithms/target/scala-2.13/data_algorithms_2.13-1.0.jar",
-//        "D:\\code\\spark-demo\\practice_spark\\target\\scala-2.13\\practice_spark_2.13-1.0.jar",
+        "D:\\code\\data_algorithms\\target\\scala-2.13\\data_algorithms_2.13-1.0.jar",
       ))
   }
 

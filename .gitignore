@@ -148,3 +148,5 @@ hs_err_pid*
 /httpRequests/
 
 .idea
+
+src/main/scala/config/SparkConfig.scala
