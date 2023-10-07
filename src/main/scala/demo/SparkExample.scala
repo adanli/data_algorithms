@@ -8,7 +8,7 @@ object SparkExample {
     val spark = SparkConfig.spark("spark-example")
 
     val strings = spark.read.textFile("s3a://books/README.md")
-    strings.show(10, false)
+    strings.show(10, truncate = false)
 
     println(strings.filter(col("value").contains("Spark")).count())
   }
