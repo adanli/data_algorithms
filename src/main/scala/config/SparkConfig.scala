@@ -19,7 +19,7 @@ object SparkConfig {
       .set("spark.executor.memory", "4g")
       .set("spark.executor.cores", "1")
       .set("HADOOP_USER_NAME", "root")
-      .set("spark.driver.host", if(isMac) "localhost" else "11.0.0.199")
+      .set("spark.driver.host", if(isMac) "localhost" else (if(isLinux) "11.0.0.193" else "11.0.0.199"))
       .set("spark.hadoop.fs.s3a.endpoint", "http://11.0.0.197:9000")
       .set("spark.hadoop.fs.s3a.access.key", "nnICK7KOtzheuCh4aCW6")
       .set("spark.hadoop.fs.s3a.secret.key", "g8lPsriEGfpJaym0PMUYcEwnKBp8g4GOGWg5UU8B")
@@ -34,6 +34,10 @@ object SparkConfig {
 
   private def isMac: Boolean = {
     System.getProperty("os.name").contains("Mac")
+  }
+
+  private def isLinux: Boolean = {
+    System.getProperty("os.name").contains("Linux")
   }
 
 }
