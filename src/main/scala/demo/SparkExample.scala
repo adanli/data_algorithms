@@ -13,19 +13,22 @@ object SparkExample {
     println(strings.filter(col("value").contains("Spark")).count())*/
 
 
-    val claim = spark.read.option("header", "true").csv("s3a://data/系统清单数据/案件清单-20231008.csv")
-    claim.show(false)
+    val claim = spark.read.option("header", "true").csv("s3a://data/系统清单数据/t_agn_report_history.1.0.csv")
+//    val claim = spark.read.option("header", "true").csv("s3a://data/系统清单数据/案件清单-20231008.csv")
+    claim
+      .where(col("'claim_apply_no'").equalTo("'R221211C00000010000997001'"))
+      .show(false)
 
     val s1 = System.currentTimeMillis()
     println(claim.count())
     println(s"案件量统计耗时: ${System.currentTimeMillis() - s1}")
 
-    val claimByPolicy = spark.read.options(Map("header" -> "true")).csv("s3a://data/系统清单数据/赔案清单-20231008.csv")
+    /*val claimByPolicy = spark.read.options(Map("header" -> "true")).csv("s3a://data/系统清单数据/赔案清单-20231008.csv")
     claimByPolicy.show(false)
 
     val s2 = System.currentTimeMillis()
     println(claimByPolicy.count())
-    println(s"赔案量统计耗时: ${System.currentTimeMillis() - s2}")
+    println(s"赔案量统计耗时: ${System.currentTimeMillis() - s2}")*/
 
   }
 
