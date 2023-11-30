@@ -16,3 +16,4 @@ libraryDependencies ++= Seq(
 )
 
 //mainClass in (Compile, packageBin) := Some("ml.DecisionTreeFeature")
+mainClass in (Compile, packageBin) := Some("demo.SparkExample")
